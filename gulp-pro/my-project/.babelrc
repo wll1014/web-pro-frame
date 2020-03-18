@@ -1,0 +1,14 @@
+{
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": "cover 80% in CN, Firefox ESR, ie 9"
+        }
+      ]
+    ],
+    "plugins": [
+      
+      
+    ]
+  }

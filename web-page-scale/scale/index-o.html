@@ -58,20 +58,19 @@
 </head>
 
 <body style="min-height:900px ">
-	<div style="background-color: rebeccapurple; height: 900px;width: 20px;position: fixed;"></div>
-	<div id="root" style="min-width: 2000px;height: 900px;background-color: black;color: #ffffff;">
+	<div id="root" style="min-width: 1600px;height: 900px;background-color: black;color: #ffffff;">
 		<div>
 			content
 		</div>
 		<div>
 			<img src="./缩放流程.png" alt="">
 		</div>
-		<div id="main" style="height: 300px;width: 100%;">
+		<div id="main" style="height: 300px;width: 400px;">
 
 		</div>
 		<div id="info"></div>
 		<div><button onClick="(function(){
-			scaleObj.autoScale(2000)
+			scaleObj.autoScale(1600)
 			setInfo()
 		})()">自动缩小（dpr+minWidth）</button></div>
 		<div><button onClick="(function(){
