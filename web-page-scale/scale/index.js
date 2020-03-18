@@ -1,4 +1,14 @@
 var scaleObj = {
+    det: -1,//纪录window.innerWidth-window.document.body.clientWidth，这是因为clentfwidth在onresize中获取的不准，所以使用innerWidth来处理，innerwidth比较稳定
+    minWidth:-1,
+    init:function(minWidth){
+        this.minWidth = minWidth==undefined?this.minWidth:minWidth
+        this.det = this.getDet()
+    },
+    getDet:function(){
+        var det = this.det<0?window.innerWidth-window.document.body.clientWidth:this.det
+        return det
+    },
     getScreenResolution:function(){
         return {
             height:window.screen.height,
@@ -21,7 +31,7 @@ var scaleObj = {
         
         var scrollWidth = 10//这是竖向滚动条的宽度，目前暂定默认值，后续可精确计算
         
-        window.document.getElementsByTagName('body')[0].style.zoom = zoom *  window.document.body.clientWidth/(minWidth+scrollWidth)//仅保证全屏的情况下不出现滚动条
+        window.document.getElementsByTagName('body')[0].style.zoom = zoom *  (window.innerWidth-this.det)/(minWidth+scrollWidth)//仅保证全屏的情况下不出现滚动条
     },
     autoScale:function(minWidth){//自动缩放
 
@@ -32,8 +42,10 @@ var scaleObj = {
 
         //情况1 根据dpr缩放
         this.scaleByDpr(dpr)
+
         //情况2 临界宽度缩放
-        if(minWidth!=undefined&&dpr>=1){
+        var minWidth = minWidth==undefined?this.minWidth:minWidth
+        if(minWidth>0&&dpr>=1){
             var screen = this.getScreenResolution()//获取屏幕分辨率
             var screen_width = screen.width
             if(minWidth>screen_width){//当最小宽度超过了屏幕宽度，全屏的情况下出现了滚动条了哦，就需要我们进行缩放啦

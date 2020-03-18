@@ -24,6 +24,7 @@
 			document.getElementById("info").innerHTML=info
 		}
 		window.onload = function(){
+			scaleObj.init(1600)
 			setInfo()
 			var myChart = echarts.init(document.getElementById('main'));
 			option = {
@@ -70,7 +71,7 @@
 		</div>
 		<div id="info"></div>
 		<div><button onClick="(function(){
-			scaleObj.autoScale(1600)
+			scaleObj.autoScale()
 			setInfo()
 		})()">自动缩小（dpr+minWidth）</button></div>
 		<div><button onClick="(function(){
