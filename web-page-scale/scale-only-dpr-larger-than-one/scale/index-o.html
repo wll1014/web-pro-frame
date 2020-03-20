@@ -21,7 +21,7 @@
 			var browserDpr = scaleObj.getBrowserDpr()//浏览器缩放比例dpr为
 			var scale = window.document.getElementsByTagName('body')[0].style.zoom
 			scale = scale==undefined||scale==""?1:scale
-			var info = `屏幕分辨率宽度:${resolution.width},当前系统屏幕dpr约为${dpr},浏览器缩放比例dpr约为${browserDpr}，当前页面缩放比例为${scale}`
+			info = `屏幕分辨率宽度:${resolution.width},当前系统屏幕dpr约为${dpr},浏览器缩放比例dpr约为${browserDpr}，当前页面缩放比例为${scale}`
 			document.getElementById("info").innerHTML=info
 		}
 		window.onload = function(){
@@ -84,10 +84,7 @@
 			scaleObj.restore()
 			setInfo()
 		})()">还原</button></div>
-		<div><button onClick="(function(){
-			scaleObj.scaleByDpr()
-			setInfo()
-		})()">只根据dpr缩放</button></div>
+		<div></div>
 	</div>
 	
 </body>
